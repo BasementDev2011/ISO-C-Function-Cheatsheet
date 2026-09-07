@@ -1,0 +1,165 @@
+//|----------------------------------------------------------------------------
+//| Program Termination (stdlib.h)
+//|----------------------------------------------------------------------------
+
+void          abort         (void);                                              /* Terminates the program abnormally. */
+void          exit          (int status);                                        /* Terminates the program normally and performs normal termination processing. */
+void          _Exit         (int status);                                        /* Terminates the program immediately without normal termination processing. */
+int           atexit        (void (*function)(void));                            /* Registers a function to be called when the program terminates normally. */
+int           at_quick_exit (void (*function)(void));                            /* Registers a function to be called when the program terminates through quick_exit. */
+void          quick_exit    (int status);                                        /* Terminates the program while calling functions registered with at_quick_exit. */
+
+
+//|----------------------------------------------------------------------------
+//| Program Termination Constants (stdlib.h)
+//|----------------------------------------------------------------------------
+
+EXIT_SUCCESS                                                                    /* Integer constant indicating successful program termination. */
+EXIT_FAILURE                                                                    /* Integer constant indicating unsuccessful program termination. */
+
+
+//|----------------------------------------------------------------------------
+//| Dynamic Memory Allocation (stdlib.h)
+//|----------------------------------------------------------------------------
+
+void         *malloc        (size_t size);                                       /* Allocates size bytes of uninitialized storage. */
+void         *calloc        (size_t count, size_t size);                        /* Allocates storage for count objects of size bytes and initializes all allocated bytes to zero. */
+void         *realloc       (void *pointer, size_t size);                       /* Changes the size of an existing memory allocation while preserving its existing contents. */
+void          free          (void *pointer);                                     /* Releases memory previously allocated by malloc, calloc, or realloc. */
+
+
+//|----------------------------------------------------------------------------
+//| Integer Conversion (stdlib.h)
+//|----------------------------------------------------------------------------
+
+int           atoi          (const char *str);                                   /* Converts the initial portion of str to int. */
+long int      atol          (const char *str);                                   /* Converts the initial portion of str to long int. */
+long long int atoll         (const char *str);                                   /* Converts the initial portion of str to long long int. */
+
+long int      strtol        (const char *restrict str, char **restrict end, int base); /* Converts str to long int using the specified base. */
+unsigned long int
+              strtoul       (const char *restrict str, char **restrict end, int base); /* Converts str to unsigned long int using the specified base. */
+long long int strtoll       (const char *restrict str, char **restrict end, int base); /* Converts str to long long int using the specified base. */
+unsigned long long int
+              strtoull      (const char *restrict str, char **restrict end, int base); /* Converts str to unsigned long long int using the specified base. */
+
+
+//|----------------------------------------------------------------------------
+//| Floating-Point Conversion (stdlib.h)
+//|----------------------------------------------------------------------------
+
+double        atof          (const char *str);                                   /* Converts the initial portion of str to double. */
+
+float         strtof        (const char *restrict str, char **restrict end);     /* Converts str to float. */
+double        strtod        (const char *restrict str, char **restrict end);     /* Converts str to double. */
+long double   strtold       (const char *restrict str, char **restrict end);     /* Converts str to long double. */
+
+
+//|----------------------------------------------------------------------------
+//| Pseudo-Random Number Generation (stdlib.h)
+//|----------------------------------------------------------------------------
+
+int           rand          (void);                                               /* Returns a pseudo-random integer between 0 and RAND_MAX. */
+void          srand         (unsigned int seed);                                 /* Initializes the pseudo-random number generator with seed. */
+
+
+//|----------------------------------------------------------------------------
+//| Random Number Constants (stdlib.h)
+//|----------------------------------------------------------------------------
+
+RAND_MAX                                                                        /* Maximum value returned by rand. */
+
+
+//|----------------------------------------------------------------------------
+//| Integer Division (stdlib.h)
+//|----------------------------------------------------------------------------
+
+div_t         div           (int numerator, int denominator);                    /* Divides two int values and returns both quotient and remainder. */
+ldiv_t        ldiv          (long int numerator, long int denominator);           /* Divides two long int values and returns both quotient and remainder. */
+lldiv_t       lldiv         (long long int numerator, long long int denominator); /* Divides two long long int values and returns both quotient and remainder. */
+
+
+//|----------------------------------------------------------------------------
+//| Absolute Value (stdlib.h)
+//|----------------------------------------------------------------------------
+
+int           abs           (int value);                                          /* Returns the absolute value of an int. */
+long int      labs          (long int value);                                     /* Returns the absolute value of a long int. */
+long long int llabs         (long long int value);                                /* Returns the absolute value of a long long int. */
+
+
+//|----------------------------------------------------------------------------
+//| Sorting and Searching (stdlib.h)
+//|----------------------------------------------------------------------------
+
+void          qsort         (void *base, size_t count, size_t size, int (*compare)(const void *, const void *)); /* Sorts an array using a comparison function. */
+void         *bsearch       (const void *key, const void *base, size_t count, size_t size, int (*compare)(const void *, const void *)); /* Searches an array for an element matching key. */
+
+
+//|----------------------------------------------------------------------------
+//| Environment (stdlib.h)
+//|----------------------------------------------------------------------------
+
+char         *getenv        (const char *name);                                  /* Returns the value of the specified environment variable, or a null pointer if it does not exist. */
+
+
+//|----------------------------------------------------------------------------
+//| Multibyte Character Conversion (stdlib.h)
+//|----------------------------------------------------------------------------
+
+int           mblen         (const char *str, size_t count);                     /* Determines the number of bytes in the next multibyte character. */
+int           mbtowc        (wchar_t *restrict wide_character, const char *restrict str, size_t count); /* Converts a multibyte character to a wide character. */
+int           wctomb        (char *str, wchar_t wide_character);                 /* Converts a wide character to a multibyte character. */
+size_t        mbstowcs      (wchar_t *restrict wide_string, const char *restrict string, size_t count); /* Converts a multibyte string to a wide-character string. */
+size_t        wcstombs      (char *restrict string, const wchar_t *restrict wide_string, size_t count); /* Converts a wide-character string to a multibyte string. */
+
+
+//|----------------------------------------------------------------------------
+//| Restartable Multibyte Character Conversion (stdlib.h)
+//|----------------------------------------------------------------------------
+
+size_t        mbrlen        (const char *restrict str, size_t count, mbstate_t *restrict state); /* Determines the number of bytes in the next multibyte character using a conversion state. */
+int           mbrtowc       (wchar_t *restrict wide_character, const char *restrict str, size_t count, mbstate_t *restrict state); /* Converts a multibyte character to a wide character using a conversion state. */
+size_t        wcrtomb       (char *restrict str, wchar_t wide_character, mbstate_t *restrict state); /* Converts a wide character to a multibyte character using a conversion state. */
+size_t        mbsrtowcs     (wchar_t *restrict wide_string, const char **restrict string, size_t count, mbstate_t *restrict state); /* Converts a multibyte string to a wide-character string using a conversion state. */
+size_t        wcsrtombs     (char *restrict string, const wchar_t **restrict wide_string, size_t count, mbstate_t *restrict state); /* Converts a wide-character string to a multibyte string using a conversion state. */
+
+
+//|----------------------------------------------------------------------------
+//| Types (stdlib.h)
+//|----------------------------------------------------------------------------
+
+div_t                                                                       /* Result type returned by div, containing quotient and remainder. */
+ldiv_t                                                                      /* Result type returned by ldiv, containing quotient and remainder. */
+lldiv_t                                                                     /* Result type returned by lldiv, containing quotient and remainder. */
+mbstate_t                                                                    /* Type representing the conversion state of a multibyte character sequence. */
+
+
+//|----------------------------------------------------------------------------
+//| div_t Members (stdlib.h)
+//|----------------------------------------------------------------------------
+
+quot                                                                          /* Quotient member of div_t. */
+rem                                                                           /* Remainder member of div_t. */
+
+
+//|----------------------------------------------------------------------------
+//| ldiv_t Members (stdlib.h)
+//|----------------------------------------------------------------------------
+
+quot                                                                          /* Quotient member of ldiv_t. */
+rem                                                                           /* Remainder member of ldiv_t. */
+
+
+//|----------------------------------------------------------------------------
+//| lldiv_t Members (stdlib.h)
+//|----------------------------------------------------------------------------
+
+quot                                                                          /* Quotient member of lldiv_t. */
+rem                                                                           /* Remainder member of lldiv_t. */
+
+//|----------------------------------------------------------------------------
+//| Command Execution (stdlib.h)
+//|----------------------------------------------------------------------------
+
+int           system        (const char *command);                               /* Passes command to the host environment for execution. */

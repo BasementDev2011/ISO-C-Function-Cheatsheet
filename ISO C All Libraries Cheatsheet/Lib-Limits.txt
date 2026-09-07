@@ -1,0 +1,218 @@
+//|----------------------------------------------------------------------------
+//| Integer Type Limits (limits.h)
+//|----------------------------------------------------------------------------
+
+//|----------------------------------------------------------------------------
+//| Number of Bits / Bytes
+//|----------------------------------------------------------------------------
+
+CHAR_BIT                                                                          /* Number of bits in a byte. */
+MB_LEN_MAX                                                                        /* Maximum number of bytes in a multibyte character. */
+
+//|----------------------------------------------------------------------------
+//| Signed char
+//|----------------------------------------------------------------------------
+
+SCHAR_MIN                                                                         /* Minimum value of signed char. */
+SCHAR_MAX                                                                         /* Maximum value of signed char. */
+
+//|----------------------------------------------------------------------------
+//| Unsigned char
+//|----------------------------------------------------------------------------
+
+UCHAR_MAX                                                                         /* Maximum value of unsigned char. */
+
+//|----------------------------------------------------------------------------
+//| char
+//|----------------------------------------------------------------------------
+
+CHAR_MIN                                                                         /* Minimum value of char. */
+CHAR_MAX                                                                         /* Maximum value of char. */
+
+//|----------------------------------------------------------------------------
+//| short
+//|----------------------------------------------------------------------------
+
+SHRT_MIN                                                                          /* Minimum value of short. */
+SHRT_MAX                                                                          /* Maximum value of short. */
+
+//|----------------------------------------------------------------------------
+//| unsigned short
+//|----------------------------------------------------------------------------
+
+USHRT_MAX                                                                         /* Maximum value of unsigned short. */
+
+//|----------------------------------------------------------------------------
+//| int
+//|----------------------------------------------------------------------------
+
+INT_MIN                                                                           /* Minimum value of int. */
+INT_MAX                                                                           /* Maximum value of int. */
+
+//|----------------------------------------------------------------------------
+//| unsigned int
+//|----------------------------------------------------------------------------
+
+UINT_MAX                                                                          /* Maximum value of unsigned int. */
+
+//|----------------------------------------------------------------------------
+//| long
+//|----------------------------------------------------------------------------
+
+LONG_MIN                                                                          /* Minimum value of long. */
+LONG_MAX                                                                          /* Maximum value of long. */
+
+//|----------------------------------------------------------------------------
+//| unsigned long
+//|----------------------------------------------------------------------------
+
+ULONG_MAX                                                                         /* Maximum value of unsigned long. */
+
+//|----------------------------------------------------------------------------
+//| long long
+//|----------------------------------------------------------------------------
+
+LLONG_MIN                                                                         /* Minimum value of long long. */
+LLONG_MAX                                                                         /* Maximum value of long long. */
+
+//|----------------------------------------------------------------------------
+//| unsigned long long
+//|----------------------------------------------------------------------------
+
+ULLONG_MAX                                                                        /* Maximum value of unsigned long long. */
+
+//|----------------------------------------------------------------------------
+//| wchar_t
+//|----------------------------------------------------------------------------
+
+WCHAR_MIN                                                                         /* Minimum value representable by wchar_t. */
+WCHAR_MAX                                                                         /* Maximum value representable by wchar_t. */
+
+//|----------------------------------------------------------------------------
+//| wint_t
+//|----------------------------------------------------------------------------
+
+WINT_MIN                                                                          /* Minimum value representable by wint_t, when provided. */
+WINT_MAX                                                                          /* Maximum value representable by wint_t, when provided. */
+
+//|----------------------------------------------------------------------------
+//| Integer Type Characteristics
+//|----------------------------------------------------------------------------
+
+MB_LEN_MAX                                                                        /* Maximum number of bytes in a multibyte character. */
+CHAR_BIT                                                                          /* Number of bits in a byte. */
+
+//|----------------------------------------------------------------------------
+//| C23 Bit-Width Macros
+//|----------------------------------------------------------------------------
+
+SCHAR_WIDTH                                                                       /* Number of value bits in signed char. */
+UCHAR_WIDTH                                                                       /* Number of value bits in unsigned char. */
+CHAR_WIDTH                                                                        /* Number of value bits in char. */
+
+SHRT_WIDTH                                                                        /* Number of value bits in short. */
+USHRT_WIDTH                                                                       /* Number of value bits in unsigned short. */
+
+INT_WIDTH                                                                         /* Number of value bits in int. */
+UINT_WIDTH                                                                        /* Number of value bits in unsigned int. */
+
+LONG_WIDTH                                                                        /* Number of value bits in long. */
+ULONG_WIDTH                                                                       /* Number of value bits in unsigned long. */
+
+LLONG_WIDTH                                                                       /* Number of value bits in long long. */
+ULLONG_WIDTH                                                                      /* Number of value bits in unsigned long long. */
+
+//|----------------------------------------------------------------------------
+//| C23 Boolean Type Limits
+//|----------------------------------------------------------------------------
+
+BOOL_WIDTH                                                                        /* Number of bits in the bool type. */
+
+//|----------------------------------------------------------------------------
+//| C23 wchar_t and wint_t Width
+//|----------------------------------------------------------------------------
+
+WCHAR_WIDTH                                                                       /* Number of bits in wchar_t. */
+WINT_WIDTH                                                                        /* Number of bits in wint_t, when provided. */
+
+//|----------------------------------------------------------------------------
+//| Minimum Required Ranges
+//|----------------------------------------------------------------------------
+
+// ISO C guarantees at least the following ranges:
+//
+//     SCHAR_MIN   <= -127
+//     SCHAR_MAX   >=  127
+//     UCHAR_MAX   >=  255
+//
+//     SHRT_MIN    <= -32767
+//     SHRT_MAX    >=  32767
+//     USHRT_MAX   >= 65535
+//
+//     INT_MIN     <= -32767
+//     INT_MAX     >=  32767
+//     UINT_MAX    >= 65535
+//
+//     LONG_MIN    <= -2147483647
+//     LONG_MAX    >=  2147483647
+//     ULONG_MAX   >= 4294967295
+//
+//     LLONG_MIN   <= -9223372036854775807
+//     LLONG_MAX   >=  9223372036854775807
+//     ULLONG_MAX  >= 18446744073709551615
+//
+// The implementation may provide larger ranges.
+
+//|----------------------------------------------------------------------------
+//| Important char Rule
+//|----------------------------------------------------------------------------
+
+// char is a distinct type from both signed char and unsigned char.
+//
+// Whether plain char behaves as signed or unsigned is implementation-defined.
+//
+// Therefore:
+//
+//     CHAR_MIN
+//     CHAR_MAX
+//
+// must be used when determining the range of plain char.
+//
+// Do not assume:
+//
+//     CHAR_MIN == SCHAR_MIN
+//
+// or:
+//
+//     CHAR_MAX == SCHAR_MAX
+
+//|----------------------------------------------------------------------------
+//| Important Width Rule
+//|----------------------------------------------------------------------------
+
+// CHAR_BIT is the number of bits in a byte.
+//
+// sizeof(char) is always 1.
+//
+// Therefore, one byte is not required by ISO C to contain exactly 8 bits.
+//
+// On common modern systems:
+//
+//     CHAR_BIT == 8
+//
+// but portable C code must not assume this unless the program explicitly
+// requires an 8-bit byte.
+
+//|----------------------------------------------------------------------------
+//| ISO C Scope
+//|----------------------------------------------------------------------------
+
+// <limits.h> provides:
+//
+//     integer limits
+//     character limits
+//     byte size
+//     multibyte character limits
+//     C23 integer width information
+//
+// It contains no functions and no typedef declarations.

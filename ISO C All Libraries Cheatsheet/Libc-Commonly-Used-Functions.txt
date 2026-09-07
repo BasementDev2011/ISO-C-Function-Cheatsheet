@@ -1,0 +1,86 @@
+//|----------------------------------------------------------------------------
+//| String Length (string.h)
+//|----------------------------------------------------------------------------
+
+size_t       strlen        (const char *str);                                      /* Returns the number of characters in str before the terminating null character. */
+
+
+//|----------------------------------------------------------------------------
+//| String Comparison (string.h)
+//|----------------------------------------------------------------------------
+
+int          strcmp        (const char *left, const char *right);                 /* Compares two strings lexicographically. Returns a value less than, equal to, or greater than zero. */
+int          strncmp       (const char *left, const char *right, size_t count);   /* Compares at most count characters of two strings lexicographically. */
+
+
+//|----------------------------------------------------------------------------
+//| String Copy (string.h)
+//|----------------------------------------------------------------------------
+
+char        *strcpy        (char *restrict destination, const char *restrict source);                   /* Copies source, including its terminating null character, into destination. */
+char        *strncpy       (char *restrict destination, const char *restrict source, size_t count);     /* Copies at most count characters from source into destination. */
+
+
+//|----------------------------------------------------------------------------
+//| String Concatenation (string.h)
+//|----------------------------------------------------------------------------
+
+char        *strcat        (char *restrict destination, const char *restrict source);                   /* Appends source to the end of destination. */
+char        *strncat       (char *restrict destination, const char *restrict source, size_t count);     /* Appends at most count characters from source to destination. */
+
+
+//|----------------------------------------------------------------------------
+//| String Searching (string.h)
+//|----------------------------------------------------------------------------
+
+char        *strchr        (const char *str, int character);                      /* Finds the first occurrence of character in str. */
+char        *strrchr       (const char *str, int character);                     /* Finds the last occurrence of character in str. */
+char        *strstr        (const char *haystack, const char *needle);            /* Finds the first occurrence of needle inside haystack. */
+char        *strpbrk       (const char *str, const char *characters);             /* Finds the first character in str matching any character in characters. */
+size_t       strspn        (const char *str, const char *characters);              /* Returns the length of the initial part of str containing only characters from characters. */
+size_t       strcspn       (const char *str, const char *characters);              /* Returns the length of the initial part of str containing none of the characters in characters. */
+
+
+//|----------------------------------------------------------------------------
+//| String Tokenization (string.h)
+//|----------------------------------------------------------------------------
+
+char        *strtok        (char *restrict str, const char *restrict delimiters); /* Splits a string into tokens separated by characters from delimiters. */
+
+
+//|----------------------------------------------------------------------------
+//| Locale-Aware String Operations (string.h)
+//|----------------------------------------------------------------------------
+
+int          strcoll       (const char *left, const char *right);                 /* Compares two strings according to the current locale. */
+size_t       strxfrm       (char *restrict destination, const char *restrict source, size_t count);     /* Transforms a string into a form suitable for locale-aware comparison. */
+
+
+//|----------------------------------------------------------------------------
+//| Error Messages (string.h)
+//|----------------------------------------------------------------------------
+
+char        *strerror      (int error);                                           /* Returns a string describing the specified error number. */
+
+
+//|----------------------------------------------------------------------------
+//| Memory Copy (string.h)
+//|----------------------------------------------------------------------------
+
+void         *memcpy       (void *restrict destination, const void *restrict source, size_t count);     /* Copies count bytes from source to destination. */
+void         *memmove      (void *destination, const void *source, size_t count);                       /* Copies count bytes from source to destination while safely handling overlapping memory. */
+
+
+//|----------------------------------------------------------------------------
+//| Memory Filling (string.h)
+//|----------------------------------------------------------------------------
+
+void         *memset       (void *destination, int value, size_t count);          /* Sets the first count bytes of destination to the converted unsigned char value. */
+
+
+//|----------------------------------------------------------------------------
+//| Memory Comparison (string.h)
+//|----------------------------------------------------------------------------
+
+int          memcmp        (const void *left, const void *right, size_t count);   /* Compares the first count bytes of two memory regions. */
+void         *memchr        (const void *memory, int value, size_t count);         /* Finds the first occurrence of value in the first count bytes of memory. */

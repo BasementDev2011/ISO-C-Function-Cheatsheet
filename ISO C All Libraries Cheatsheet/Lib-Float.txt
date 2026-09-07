@@ -1,0 +1,201 @@
+//|----------------------------------------------------------------------------
+//| Floating-Point Characteristics (float.h)
+//|----------------------------------------------------------------------------
+
+//|----------------------------------------------------------------------------
+//| Radix and Rounding
+//|----------------------------------------------------------------------------
+
+FLT_RADIX                                                                          /* Radix, or base, of the floating-point representation. */
+FLT_ROUNDS                                                                         /* Floating-point rounding mode used by the implementation. */
+
+//|----------------------------------------------------------------------------
+//| float: Significant Digits
+//|----------------------------------------------------------------------------
+
+FLT_MANT_DIG                                                                        /* Number of base-FLT_RADIX digits in the significand of float. */
+FLT_DECIMAL_DIG                                                                     /* Number of decimal digits, n, such that conversions with at least n digits preserve value. */
+FLT_DIG                                                                             /* Number of decimal digits that can be rounded into float and back without change. */
+
+//|----------------------------------------------------------------------------
+//| double: Significant Digits
+//|----------------------------------------------------------------------------
+
+DBL_MANT_DIG                                                                        /* Number of base-FLT_RADIX digits in the significand of double. */
+DBL_DECIMAL_DIG                                                                     /* Number of decimal digits, n, such that conversions with at least n digits preserve value. */
+DBL_DIG                                                                             /* Number of decimal digits that can be rounded into double and back without change. */
+
+//|----------------------------------------------------------------------------
+//| long double: Significant Digits
+//|----------------------------------------------------------------------------
+
+LDBL_MANT_DIG                                                                       /* Number of base-FLT_RADIX digits in the significand of long double. */
+LDBL_DECIMAL_DIG                                                                    /* Number of decimal digits, n, such that conversions with at least n digits preserve value. */
+LDBL_DIG                                                                            /* Number of decimal digits that can be rounded into long double and back without change. */
+
+//|----------------------------------------------------------------------------
+//| float: Exponent Range
+//|----------------------------------------------------------------------------
+
+FLT_MIN_EXP                                                                          /* Minimum negative integer such that FLT_RADIX raised to that power is a normalized float. */
+FLT_MAX_EXP                                                                          /* Maximum positive integer such that FLT_RADIX raised to that power minus 1 is a normalized float. */
+
+FLT_MIN_10_EXP                                                                       /* Minimum negative decimal exponent for a normalized float. */
+FLT_MAX_10_EXP                                                                       /* Maximum positive decimal exponent for a normalized float. */
+
+//|----------------------------------------------------------------------------
+//| double: Exponent Range
+//|----------------------------------------------------------------------------
+
+DBL_MIN_EXP                                                                          /* Minimum negative integer such that FLT_RADIX raised to that power is a normalized double. */
+DBL_MAX_EXP                                                                          /* Maximum positive integer such that FLT_RADIX raised to that power minus 1 is a normalized double. */
+
+DBL_MIN_10_EXP                                                                       /* Minimum negative decimal exponent for a normalized double. */
+DBL_MAX_10_EXP                                                                       /* Maximum positive decimal exponent for a normalized double. */
+
+//|----------------------------------------------------------------------------
+//| long double: Exponent Range
+//|----------------------------------------------------------------------------
+
+LDBL_MIN_EXP                                                                         /* Minimum negative integer such that FLT_RADIX raised to that power is a normalized long double. */
+LDBL_MAX_EXP                                                                         /* Maximum positive integer such that FLT_RADIX raised to that power minus 1 is a normalized long double. */
+
+LDBL_MIN_10_EXP                                                                      /* Minimum negative decimal exponent for a normalized long double. */
+LDBL_MAX_10_EXP                                                                      /* Maximum positive decimal exponent for a normalized long double. */
+
+//|----------------------------------------------------------------------------
+//| float: Range
+//|----------------------------------------------------------------------------
+
+FLT_MIN                                                                               /* Smallest positive normalized value of type float. */
+FLT_MAX                                                                               /* Maximum finite value of type float. */
+
+//|----------------------------------------------------------------------------
+//| double: Range
+//|----------------------------------------------------------------------------
+
+DBL_MIN                                                                               /* Smallest positive normalized value of type double. */
+DBL_MAX                                                                               /* Maximum finite value of type double. */
+
+//|----------------------------------------------------------------------------
+//| long double: Range
+//|----------------------------------------------------------------------------
+
+LDBL_MIN                                                                              /* Smallest positive normalized value of type long double. */
+LDBL_MAX                                                                              /* Maximum finite value of type long double. */
+
+//|----------------------------------------------------------------------------
+//| float: Evaluation Characteristics
+//|----------------------------------------------------------------------------
+
+FLT_EVAL_METHOD                                                                      /* Determines the precision and range used to evaluate floating-point expressions and constants. */
+
+//|----------------------------------------------------------------------------
+//| float: Subnormal / True Minimum
+//|----------------------------------------------------------------------------
+
+FLT_TRUE_MIN                                                                          /* Smallest positive value of type float, including subnormal values, when supported. */
+
+//|----------------------------------------------------------------------------
+//| double: Subnormal / True Minimum
+//|----------------------------------------------------------------------------
+
+DBL_TRUE_MIN                                                                          /* Smallest positive value of type double, including subnormal values, when supported. */
+
+//|----------------------------------------------------------------------------
+//| long double: Subnormal / True Minimum
+//|----------------------------------------------------------------------------
+
+LDBL_TRUE_MIN                                                                         /* Smallest positive value of type long double, including subnormal values, when supported. */
+
+//|----------------------------------------------------------------------------
+//| Floating-Point Evaluation Precision
+//|----------------------------------------------------------------------------
+
+FLT_HAS_SUBNORM                                                                       /* Indicates whether float supports subnormal numbers. */
+DBL_HAS_SUBNORM                                                                       /* Indicates whether double supports subnormal numbers. */
+LDBL_HAS_SUBNORM                                                                      /* Indicates whether long double supports subnormal numbers. */
+
+//|----------------------------------------------------------------------------
+//| C11 Decimal Conversion Precision
+//|----------------------------------------------------------------------------
+
+DECIMAL_DIG                                                                           /* Number of decimal digits, n, such that conversions with at least n decimal digits preserve the value of supported floating-point types. */
+
+//|----------------------------------------------------------------------------
+//| C11 / C17 Floating-Point Characteristics
+//|----------------------------------------------------------------------------
+
+// The following macros describe the implementation's floating-point model:
+//
+//     FLT_RADIX
+//     FLT_ROUNDS
+//     FLT_EVAL_METHOD
+//
+// and the precision/range characteristics of:
+//
+//     float
+//     double
+//     long double
+
+//|----------------------------------------------------------------------------
+//| C11 / C17 / C23 Notes
+//|----------------------------------------------------------------------------
+
+// FLT_MIN, DBL_MIN, and LDBL_MIN are NOT the most negative values.
+//
+// They are the smallest positive NORMALIZED values.
+//
+// For example:
+//
+//     FLT_MIN > 0
+//
+// while:
+//
+//     -FLT_MAX
+//
+// is the approximate most-negative finite float value.
+//
+// Use -FLT_MAX when you need the lower end of the finite range.
+
+//|----------------------------------------------------------------------------
+//| Common IEEE-754 Example
+//|----------------------------------------------------------------------------
+
+// A typical IEEE-754 implementation has:
+//
+//     FLT_RADIX      2
+//
+//     float:
+//         FLT_MANT_DIG       24
+//         FLT_DIG            6
+//         FLT_MIN_10_EXP    -37
+//         FLT_MAX_10_EXP     38
+//
+//     double:
+//         DBL_MANT_DIG       53
+//         DBL_DIG           15
+//         DBL_MIN_10_EXP   -307
+//         DBL_MAX_10_EXP    308
+//
+//     long double:
+//         implementation-dependent
+//
+// These are examples, NOT ISO C guaranteed values.
+
+//|----------------------------------------------------------------------------
+//| ISO C Scope
+//|----------------------------------------------------------------------------
+
+// <float.h> provides floating-point implementation characteristics.
+//
+// It contains:
+//
+//     floating-point limits
+//     precision information
+//     exponent ranges
+//     radix information
+//     rounding information
+//     expression-evaluation information
+//
+// It contains no functions and no typedef declarations.

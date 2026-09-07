@@ -1,0 +1,97 @@
+//|----------------------------------------------------------------------------
+//| Assertions (assert.h)
+//|----------------------------------------------------------------------------
+
+//|----------------------------------------------------------------------------
+//| Assertion Macro
+//|----------------------------------------------------------------------------
+
+assert(expression)                                                               /* Evaluates expression and reports a diagnostic and calls abort() if it is zero. */
+
+//|----------------------------------------------------------------------------
+//| Static Assertion (C11)
+//|----------------------------------------------------------------------------
+
+static_assert(constant-expression, string-literal);                              /* Compile-time assertion. The program is ill-formed if the constant expression is zero. */
+
+_Static_assert(constant-expression, string-literal);                             /* C11/C17 spelling of the language-level static assertion. */
+
+//|----------------------------------------------------------------------------
+//| NDEBUG
+//|----------------------------------------------------------------------------
+
+NDEBUG                                                                            /* If defined before including assert.h, assert() is disabled. */
+
+//|----------------------------------------------------------------------------
+//| How assert() Works
+//|----------------------------------------------------------------------------
+
+// With NDEBUG NOT defined:
+//
+//     assert(x > 0);
+//
+// behaves conceptually like:
+//
+//     if (!(x > 0)) {
+//         /* diagnostic */
+//         abort();
+//     }
+//
+// With NDEBUG defined before including assert.h:
+//
+//     assert(x > 0);
+//
+// is disabled. The expression is not evaluated.
+
+//|----------------------------------------------------------------------------
+//| Important assert() Rules
+//|----------------------------------------------------------------------------
+
+// assert() takes one expression, not necessarily a boolean type.
+//
+// The assertion succeeds when the expression compares unequal to zero.
+//
+// The assertion fails when the expression compares equal to zero.
+//
+// The diagnostic normally contains information such as the failed expression,
+// source file, and source line. The exact diagnostic format is implementation-defined.
+//
+// A failed assert() calls abort().
+//
+// Because the expression is not evaluated when NDEBUG is defined, do not put
+// required program side effects inside assert():
+//
+//     assert(i++ < 10);
+//
+// This can behave differently depending on whether NDEBUG is defined.
+
+//|----------------------------------------------------------------------------
+//| static_assert Rules
+//|----------------------------------------------------------------------------
+
+// static_assert() performs a compile-time check.
+//
+// The first argument must be an integer constant expression.
+//
+// If the expression evaluates to zero, translation fails.
+//
+// Example:
+//
+//     static_assert(sizeof(int) >= 4, "int must be at least 32 bits");
+//
+// Unlike assert(), static_assert() does not perform a runtime check.
+//
+// Unlike assert(), static_assert() is not controlled by NDEBUG.
+
+//|----------------------------------------------------------------------------
+//| ISO C Scope
+//|----------------------------------------------------------------------------
+
+// ISO C assert.h contains:
+//
+//     assert()
+//     static_assert()       /* C23 spelling / standardized macro form */
+//     _Static_assert        /* C11/C17 language keyword */
+//     NDEBUG                /* Conditional macro controlling assert() */
+//
+// No POSIX-specific assertion functions belong in this section.

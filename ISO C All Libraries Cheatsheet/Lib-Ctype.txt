@@ -1,0 +1,44 @@
+//|----------------------------------------------------------------------------
+//| Character Classification (ctype.h)
+//|----------------------------------------------------------------------------
+
+int           isalnum        (int character);                                     /* Tests whether character is an alphabetic letter or a decimal digit. */
+int           isalpha        (int character);                                     /* Tests whether character is an alphabetic letter. */
+int           isblank        (int character);                                     /* Tests whether character is a blank character, typically a space or tab. */
+int           iscntrl        (int character);                                     /* Tests whether character is a control character. */
+int           isdigit        (int character);                                     /* Tests whether character is a decimal digit from '0' through '9'. */
+int           isgraph        (int character);                                     /* Tests whether character is printable and is not a space character. */
+int           islower        (int character);                                     /* Tests whether character is a lowercase letter. */
+int           isprint        (int character);                                     /* Tests whether character is printable, including the space character. */
+int           ispunct        (int character);                                     /* Tests whether character is a printable character that is not alphanumeric or a space character. */
+int           isspace        (int character);                                     /* Tests whether character is a whitespace character. */
+int           isupper        (int character);                                     /* Tests whether character is an uppercase letter. */
+int           isxdigit       (int character);                                     /* Tests whether character is a hexadecimal digit. */
+
+
+//|----------------------------------------------------------------------------
+//| Character Conversion (ctype.h)
+//|----------------------------------------------------------------------------
+
+int           tolower        (int character);                                     /* Converts an uppercase letter to lowercase, or returns character unchanged if no conversion applies. */
+int           toupper        (int character);                                     /* Converts a lowercase letter to uppercase, or returns character unchanged if no conversion applies. */
+
+
+//|----------------------------------------------------------------------------
+//| Character Classification Details (ctype.h)
+//|----------------------------------------------------------------------------
+//
+// isalnum   = isalpha || isdigit
+// isgraph   = printable character except space
+// isprint   = printable character including space
+// ispunct   = printable character except alphanumeric and space
+// isspace   = space, horizontal tab, vertical tab, form feed, carriage return, or newline
+// isxdigit  = decimal digit or hexadecimal letter
+//
+// All character classification functions return zero when the condition is false
+// and a nonzero value when the condition is true.
+//
+// The argument must either be EOF or representable as unsigned char.
+// Passing a negative value other than EOF produces undefined behavior.
+//
+// The classification and conversion results are affected by the current locale.

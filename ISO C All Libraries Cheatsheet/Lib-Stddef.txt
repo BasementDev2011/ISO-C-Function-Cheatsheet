@@ -1,0 +1,146 @@
+//|----------------------------------------------------------------------------
+//| Definitions and Types (stddef.h)
+//|----------------------------------------------------------------------------
+
+//|----------------------------------------------------------------------------
+//| Null Pointer Constant
+//|----------------------------------------------------------------------------
+
+NULL                                                                              /* Null pointer constant. Expands to an implementation-defined null pointer constant. */
+
+//|----------------------------------------------------------------------------
+//| Size Type
+//|----------------------------------------------------------------------------
+
+size_t                                                                            /* Unsigned integer type returned by sizeof and used for object sizes. */
+
+//|----------------------------------------------------------------------------
+//| Pointer Difference Type
+//|----------------------------------------------------------------------------
+
+ptrdiff_t                                                                         /* Signed integer type capable of representing the difference between two pointers into the same array. */
+
+//|----------------------------------------------------------------------------
+//| Maximum Alignment Type
+//|----------------------------------------------------------------------------
+
+max_align_t                                                                       /* Type whose alignment is at least as strict as every scalar type. */
+
+//|----------------------------------------------------------------------------
+//| Wide Character Types
+//|----------------------------------------------------------------------------
+
+wchar_t                                                                           /* Integer type capable of representing distinct codes for all members of the largest extended character set. */
+
+wint_t                                                                            /* Integer type capable of representing any valid wide character value and the special value WEOF. */
+
+//|----------------------------------------------------------------------------
+//| Offset Type
+//|----------------------------------------------------------------------------
+
+offsetof(type, member)                                                             /* Expands to the byte offset of member within an object of type. */
+
+//|----------------------------------------------------------------------------
+//| C23 Null Pointer Constant
+//|----------------------------------------------------------------------------
+
+nullptr_t                                                                         /* Type of the predefined null pointer constant nullptr in C23. */
+
+//|----------------------------------------------------------------------------
+//| C23 Null Pointer
+//|----------------------------------------------------------------------------
+
+nullptr                                                                           /* Null pointer constant introduced as a C23 language keyword. */
+
+//|----------------------------------------------------------------------------
+//| C23 Size and Pointer-Related Types
+//|----------------------------------------------------------------------------
+
+rsize_t                                                                           /* Optional bounds-checking size type associated with Annex K, when supported. */
+
+//|----------------------------------------------------------------------------
+//| Important Properties
+//|----------------------------------------------------------------------------
+
+// size_t
+//
+//     size_t is unsigned.
+//
+//     sizeof produces a value of type size_t.
+//
+//     Common uses:
+//
+//         size_t count;
+//         size_t length;
+//         size_t bytes;
+//
+//     Example:
+//
+//         size_t bytes = sizeof(int);
+
+// ptrdiff_t
+//
+//     ptrdiff_t is signed.
+//
+//     Pointer subtraction produces a value of type ptrdiff_t:
+//
+//         ptrdiff_t distance = &array[10] - &array[0];
+
+// offsetof()
+//
+//     offsetof(type, member) gives the offset, in bytes, of a structure or
+//     union member from the beginning of the containing object.
+//
+//     Example:
+//
+//         size_t offset = offsetof(struct Item, value);
+//
+//     The type argument must name a structure or union type, and member must
+//     identify a member of that type.
+
+// max_align_t
+//
+//     max_align_t is useful when storage must be suitably aligned for any
+//     fundamental scalar type.
+//
+//     Example:
+//
+//         max_align_t storage;
+//
+//     Dynamic memory returned by malloc() is suitably aligned for any type
+//     with a fundamental alignment requirement.
+
+// wchar_t
+//
+//     wchar_t is an integer type defined by the implementation.
+//
+//     Its size and representation are implementation-defined.
+
+// wint_t
+//
+//     wint_t is used for wide-character values and WEOF.
+
+//|----------------------------------------------------------------------------
+//| ISO C Scope
+//|----------------------------------------------------------------------------
+
+// Standard <stddef.h> facilities include:
+//
+//     NULL
+//     size_t
+//     ptrdiff_t
+//     max_align_t
+//     wchar_t
+//     wint_t
+//     offsetof()
+//
+// C23 additionally provides:
+//
+//     nullptr
+//     nullptr_t
+//
+// rsize_t is associated with the optional bounds-checking interfaces in
+// Annex K and is not universally provided.
+//
+// <stddef.h> contains no functions.
+rsize_t should be treated as an optional Annex K facility, not as a universally available <stddef.h> type

@@ -1,0 +1,378 @@
+//|----------------------------------------------------------------------------
+//| Variable Arguments (stdarg.h)
+//|----------------------------------------------------------------------------
+
+//|----------------------------------------------------------------------------
+//| Variable Argument Type
+//|----------------------------------------------------------------------------
+
+va_list                                                                            /* Type used to hold the state of a variable argument list. */
+
+//|----------------------------------------------------------------------------
+//| Variable Argument Macros
+//|----------------------------------------------------------------------------
+
+va_start(ap, last)                                                                 /* Initializes ap to access variable arguments following the last named parameter. */
+va_start(ap)                                                                       /* C23 form: initializes ap for a function with no named parameters. */
+
+va_arg(ap, type)                                                                   /* Retrieves the next argument as type and advances ap. */
+
+va_copy(dest, src)                                                                 /* Initializes dest as an independent copy of the current state of src. */
+
+va_end(ap)                                                                         /* Ends use of ap and invalidates the variable argument list. */
+
+//|----------------------------------------------------------------------------
+//| Variable Argument Function Syntax
+//|----------------------------------------------------------------------------
+
+// Traditional form:
+//
+//     void function(int count, ...);
+//
+// The ... indicates that additional arguments may be supplied.
+//
+// C23 also permits:
+//
+//     void function(...);
+//
+// A C23 function with no named parameters must use:
+//
+//     va_start(ap);
+//
+// rather than:
+//
+//     va_start(ap, last);
+//
+// because there is no named parameter.
+
+//|----------------------------------------------------------------------------
+//| va_start
+//|----------------------------------------------------------------------------
+
+// Traditional form:
+//
+//     va_start(ap, last);
+//
+//     ap
+//         va_list object that will hold the traversal state.
+//
+//     last
+//         Last named parameter before the ... parameter.
+//
+// Example:
+//
+//     void function(int count, ...)
+//     {
+//         va_list ap;
+//
+//         va_start(ap, count);
+//
+//         ...
+//
+//         va_end(ap);
+//     }
+//
+// C23 no-named-parameter form:
+//
+//     void function(...)
+//     {
+//         va_list ap;
+//
+//         va_start(ap);
+//
+//         ...
+//
+//         va_end(ap);
+//     }
+
+//|----------------------------------------------------------------------------
+//| va_arg
+//|----------------------------------------------------------------------------
+
+//     va_arg(ap, type)
+//
+// Retrieves the next argument and advances ap to the following argument.
+//
+// The type supplied to va_arg() must be compatible with the actual argument
+// type after the default argument promotions, according to the requirements
+// of ISO C.
+//
+// Using an incompatible type can result in undefined behavior.
+
+//|----------------------------------------------------------------------------
+//| Default Argument Promotions
+//|----------------------------------------------------------------------------
+
+// Arguments passed through ... undergo the default argument promotions.
+//
+// float
+//     -> double
+//
+// _Bool
+// char
+// signed char
+// unsigned char
+// short
+// unsigned short
+//     -> int or unsigned int, depending on whether int can represent all
+//        values of the original type.
+//
+// Examples:
+//
+//     float value = 1.0f;
+//
+//     function(value);
+//
+// The float argument is promoted to double.
+//
+// Therefore:
+//
+//     va_arg(ap, double)
+//
+// is correct.
+//
+// This is generally incorrect:
+//
+//     va_arg(ap, float)
+//
+// Similarly:
+//
+//     char value = 'A';
+//
+//     function(value);
+//
+// The char argument is promoted to int.
+//
+// Therefore:
+//
+//     va_arg(ap, int)
+//
+// is correct.
+
+//|----------------------------------------------------------------------------
+//| No Automatic Type Information
+//|----------------------------------------------------------------------------
+
+// A variable argument list does not contain general runtime type information.
+//
+// The function must know what types to retrieve and in what order.
+//
+// Example:
+//
+//     void function(int count, ...)
+//     {
+//         va_list ap;
+//
+//         va_start(ap, count);
+//
+//         int a = va_arg(ap, int);
+//         double b = va_arg(ap, double);
+//
+//         va_end(ap);
+//     }
+//
+// The caller and function must agree on the types and order of the
+// variable arguments.
+
+//|----------------------------------------------------------------------------
+//| va_copy
+//|----------------------------------------------------------------------------
+
+//     va_copy(dest, src)
+//
+// Creates an independent copy of the current traversal state.
+//
+// Example:
+//
+//     va_list ap;
+//     va_list copy;
+//
+//     va_start(ap, count);
+//
+//     va_copy(copy, ap);
+//
+//     int first = va_arg(ap, int);
+//     int same_first = va_arg(copy, int);
+//
+//     va_end(copy);
+//     va_end(ap);
+
+//|----------------------------------------------------------------------------
+//| Multiple Traversals
+//|----------------------------------------------------------------------------
+
+// If the same variable arguments must be traversed more than once, use
+// va_copy() to create another traversal state.
+//
+// Example:
+//
+//     va_list ap;
+//     va_list copy;
+//
+//     va_start(ap, count);
+//
+//     va_copy(copy, ap);
+//
+//     ...
+//
+//     va_end(copy);
+//     va_end(ap);
+
+//|----------------------------------------------------------------------------
+//| Passing va_list to Another Function
+//|----------------------------------------------------------------------------
+
+// A va_list can be passed to another function.
+//
+// Example:
+//
+//     void process(va_list ap)
+//     {
+//         int value = va_arg(ap, int);
+//     }
+//
+//     void function(int count, ...)
+//     {
+//         va_list ap;
+//
+//         va_start(ap, count);
+//
+//         process(ap);
+//
+//         va_end(ap);
+//     }
+//
+// If the called function invokes va_arg() on the passed va_list, the state
+// of the original va_list in the calling function is indeterminate after
+// the called function returns.
+//
+// If the caller needs to continue traversing the original list, create a
+// copy with va_copy() before passing it.
+
+//|----------------------------------------------------------------------------
+//| va_end
+//|----------------------------------------------------------------------------
+
+// Every va_list initialized by va_start() or va_copy() must eventually be
+// passed to va_end() before that va_list is reused or goes out of scope.
+//
+// Example:
+//
+//     va_list ap;
+//
+//     va_start(ap, count);
+//
+//     ...
+//
+//     va_end(ap);
+
+//|----------------------------------------------------------------------------
+//| va_list Implementation
+//|----------------------------------------------------------------------------
+
+// va_list is an implementation-defined type.
+//
+// It may be implemented as a:
+//
+//     pointer
+//     array
+//     structure
+//     arithmetic type
+//     other implementation-defined type
+//
+// Never assume a particular representation.
+//
+// Access va_list only through:
+//
+//     va_start()
+//     va_arg()
+//     va_copy()
+//     va_end()
+
+//|----------------------------------------------------------------------------
+//| Argument Type Matching
+//|----------------------------------------------------------------------------
+
+// After default argument promotions:
+//
+//     float                 -> double
+//     char                  -> int or unsigned int
+//     signed char           -> int or unsigned int
+//     unsigned char         -> int or unsigned int
+//     short                 -> int or unsigned int
+//     unsigned short        -> int or unsigned int
+//
+// Types not subject to these promotions retain their corresponding type:
+//
+//     int                   -> int
+//     unsigned int          -> unsigned int
+//     long                  -> long
+//     unsigned long         -> unsigned long
+//     long long             -> long long
+//     unsigned long long    -> unsigned long long
+//     double                -> double
+//     long double           -> long double
+
+//|----------------------------------------------------------------------------
+//| Format-Based Variable Arguments
+//|----------------------------------------------------------------------------
+
+// A common use of stdarg.h is implementing printf-like functions.
+//
+// Example:
+//
+//     void log_message(const char *format, ...);
+//
+// The format string can describe the types and order of the remaining
+// arguments.
+//
+// stdarg.h itself does not parse format strings.
+
+//|----------------------------------------------------------------------------
+//| ISO C Scope
+//|----------------------------------------------------------------------------
+
+// <stdarg.h> provides:
+//
+//     va_list
+//     va_start()
+//     va_arg()
+//     va_copy()
+//     va_end()
+//
+// It provides no ordinary functions.
+//
+// Related functions such as:
+//
+//     printf()
+//     fprintf()
+//     sprintf()
+//     snprintf()
+//     scanf()
+//     fscanf()
+//
+// belong to <stdio.h>, not <stdarg.h>.
+
+//|----------------------------------------------------------------------------
+//| C Standard Version Notes
+//|----------------------------------------------------------------------------
+
+// C89/C90:
+//
+//     va_list
+//     va_start()
+//     va_arg()
+//     va_end()
+//
+// C99:
+//
+//     va_copy()
+//
+// C23:
+//
+//     va_start(ap) can be used for a variadic function with no named
+//     parameters:
+//
+//         void function(...);
+//
+// The implementation of va_list remains implementation-defined.

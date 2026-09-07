@@ -1,0 +1,142 @@
+//|----------------------------------------------------------------------------
+//| Time Support (time.h)
+//|----------------------------------------------------------------------------
+
+//|----------------------------------------------------------------------------
+//| Clock and Calendar Types
+//|----------------------------------------------------------------------------
+
+clock_t                                                                         /* Arithmetic type used to represent processor clock time. */
+time_t                                                                          /* Arithmetic type used to represent calendar time. */
+struct tm                                                                       /* Structure containing the components of a broken-down calendar time. */
+
+//|----------------------------------------------------------------------------
+//| struct tm Members
+//|----------------------------------------------------------------------------
+
+tm_sec                                                                          /* Seconds after the minute: 0-60. */
+tm_min                                                                          /* Minutes after the hour: 0-59. */
+tm_hour                                                                         /* Hours after midnight: 0-23. */
+tm_mday                                                                         /* Day of the month: 1-31. */
+tm_mon                                                                          /* Months since January: 0-11. */
+tm_year                                                                         /* Years since 1900. */
+tm_wday                                                                         /* Days since Sunday: 0-6. */
+tm_yday                                                                         /* Days since January 1: 0-365. */
+tm_isdst                                                                        /* Daylight Saving Time flag: positive, zero, or negative if information is unavailable. */
+
+//|----------------------------------------------------------------------------
+//| Time Constants and Macros
+//|----------------------------------------------------------------------------
+
+CLOCKS_PER_SEC                                                                  /* Number of clock ticks per second returned by clock(). */
+TIME_UTC                                                                         /* Clock identifier for calendar time in UTC, used by timespec_get(). */
+
+//|----------------------------------------------------------------------------
+//| Processor Time
+//|----------------------------------------------------------------------------
+
+clock_t       clock         (void);                                             /* Returns the processor time used by the calling program. */
+
+//|----------------------------------------------------------------------------
+//| Calendar Time
+//|----------------------------------------------------------------------------
+
+time_t        time          (time_t *timer);                                   /* Returns the current calendar time and optionally stores it in *timer. */
+double        difftime      (time_t time1, time_t time0);                      /* Returns the difference between two calendar times in seconds as a double. */
+
+//|----------------------------------------------------------------------------
+//| Convert Calendar Time to Broken-Down Time
+//|----------------------------------------------------------------------------
+
+struct tm    *gmtime        (const time_t *timer);                              /* Converts calendar time to UTC broken-down time. */
+struct tm    *localtime     (const time_t *timer);                              /* Converts calendar time to local broken-down time. */
+
+//|----------------------------------------------------------------------------
+//| Convert Broken-Down Time to Calendar Time
+//|----------------------------------------------------------------------------
+
+time_t        mktime        (struct tm *timeptr);                              /* Converts local broken-down time to calendar time and normalizes the structure. */
+
+//|----------------------------------------------------------------------------
+//| Format Calendar Time
+//|----------------------------------------------------------------------------
+
+char         *asctime       (const struct tm *timeptr);                        /* Converts broken-down time to a fixed-format textual representation. */
+char         *ctime         (const time_t *timer);                              /* Converts calendar time to a fixed-format local-time textual representation. */
+
+//|----------------------------------------------------------------------------
+//| Format Time and Date
+//|----------------------------------------------------------------------------
+
+size_t        strftime      (char *s, size_t maxsize,
+                             const char *format,
+                             const struct tm *timeptr);                         /* Formats broken-down time according to format into s. */
+
+//|----------------------------------------------------------------------------
+//| C11 Calendar Time with Nanosecond Precision
+//|----------------------------------------------------------------------------
+
+struct timespec                                                                  /* Structure containing seconds and nanoseconds. */
+
+time_t        tv_sec                                                               /* Seconds component of a timespec value. */
+long          tv_nsec                                                              /* Nanoseconds component of a timespec value, 0 through 999999999. */
+
+int           timespec_get  (struct timespec *ts, int base);                    /* Stores the current calendar time for the specified time base. */
+
+int           timespec_getres(struct timespec *ts, int base);                   /* Stores the resolution of the specified time base, if supported. */
+
+//|----------------------------------------------------------------------------
+//| C23 Time Functions
+//|----------------------------------------------------------------------------
+
+int           timespec_getres(struct timespec *ts, int base);                   /* Gets the resolution of a supported time base. */
+
+int           ctime_r       (const time_t *timer, char *buf);                   /* Reentrant calendar-time conversion. C23. */
+
+struct tm    *gmtime_r      (const time_t *timer, struct tm *result);            /* Reentrant UTC calendar-time conversion. C23. */
+
+struct tm    *localtime_r   (const time_t *timer, struct tm *result);            /* Reentrant local-time conversion. C23. */
+
+//|----------------------------------------------------------------------------
+//| Notes
+//|----------------------------------------------------------------------------
+
+// clock()
+//     Measures CPU time consumed by the program, not elapsed wall-clock time.
+
+// time()
+//     Returns calendar time. The exact representation of time_t is
+//     implementation-defined.
+
+// difftime()
+//     Use this rather than subtracting time_t values directly when the
+//     result is required as a floating-point number of seconds.
+
+// gmtime()
+//     Returns UTC broken-down time.
+
+// localtime()
+//     Returns local broken-down time according to the implementation's
+//     configured timezone rules.
+
+// mktime()
+//     Interprets the supplied struct tm as local time.
+
+// strftime()
+//     Uses format conversion specifiers such as %Y, %m, %d, %H, %M, %S.
+
+//|----------------------------------------------------------------------------
+//| Standard Version Notes
+//|----------------------------------------------------------------------------
+
+// C90:
+//     clock, time, difftime, mktime, asctime, ctime, gmtime,
+//     localtime, strftime, clock_t, time_t, struct tm, CLOCKS_PER_SEC
+//
+// C11:
+//     timespec, timespec_get, TIME_UTC
+//
+// C23:
+//     Additional time facilities were standardized/updated.
+//     Availability of particular newer facilities depends on the C library
+//     and compiler version.

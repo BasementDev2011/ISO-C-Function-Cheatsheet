@@ -1,0 +1,88 @@
+//|----------------------------------------------------------------------------
+//| Boolean Type Support (stdbool.h)
+//|----------------------------------------------------------------------------
+
+//|----------------------------------------------------------------------------
+//| Boolean Type
+//|----------------------------------------------------------------------------
+
+bool                                                                              /* Boolean type. In C23, bool is a built-in standard boolean type. */
+
+//|----------------------------------------------------------------------------
+//| Boolean Constants
+//|----------------------------------------------------------------------------
+
+true                                                                              /* Boolean value representing logical true. */
+false                                                                             /* Boolean value representing logical false. */
+
+//|----------------------------------------------------------------------------
+//| C23
+//|----------------------------------------------------------------------------
+
+// In C23, <stdbool.h> is no longer needed to obtain the bool type.
+//
+//     bool
+//     true
+//     false
+//
+// are language keywords/constants provided by the C language itself.
+//
+// The <stdbool.h> header is retained for compatibility, but the older
+// macro-based interface has been deprecated in C23.
+
+//|----------------------------------------------------------------------------
+//| C17 and Earlier
+//|----------------------------------------------------------------------------
+
+// Before C23, <stdbool.h> provided:
+//
+//     bool
+//     true
+//     false
+//
+// as macros built around the built-in _Bool type.
+//
+// Conceptually:
+//
+//     bool       -> _Bool
+//     true       -> 1
+//     false      -> 0
+//
+// _Bool itself is a built-in C type and does not require <stdbool.h>.
+
+//|----------------------------------------------------------------------------
+//| Boolean Conversion
+//|----------------------------------------------------------------------------
+
+// Any scalar value can be converted to _Bool/bool:
+//
+//     0          -> false
+//     0.0        -> false
+//     NULL       -> false
+//     nonzero     -> true
+//     non-NULL    -> true
+//
+// Example:
+//
+//     bool active = 1;
+//
+//     if (active) {
+//     }
+//
+//     if (!active) {
+//     }
+
+//|----------------------------------------------------------------------------
+//| ISO C Scope
+//|----------------------------------------------------------------------------
+
+// <stdbool.h> contains no functions.
+//
+// The relevant boolean facilities are:
+//
+//     bool
+//     true
+//     false
+//
+// _Bool is the underlying built-in boolean type in C17 and earlier.
+// In C23, bool is a built-in keyword/type.

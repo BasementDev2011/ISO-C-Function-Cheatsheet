@@ -1,0 +1,279 @@
+//|----------------------------------------------------------------------------
+//| Integer Types (stdint.h)
+//|----------------------------------------------------------------------------
+
+//|----------------------------------------------------------------------------
+//| Exact-Width Signed Integer Types
+//|----------------------------------------------------------------------------
+
+int8_t                                                                            /* Signed integer type exactly 8 bits wide, if provided. */
+int16_t                                                                           /* Signed integer type exactly 16 bits wide, if provided. */
+int32_t                                                                           /* Signed integer type exactly 32 bits wide, if provided. */
+int64_t                                                                           /* Signed integer type exactly 64 bits wide, if provided. */
+
+//|----------------------------------------------------------------------------
+//| Exact-Width Unsigned Integer Types
+//|----------------------------------------------------------------------------
+
+uint8_t                                                                           /* Unsigned integer type exactly 8 bits wide, if provided. */
+uint16_t                                                                          /* Unsigned integer type exactly 16 bits wide, if provided. */
+uint32_t                                                                          /* Unsigned integer type exactly 32 bits wide, if provided. */
+uint64_t                                                                          /* Unsigned integer type exactly 64 bits wide, if provided. */
+
+//|----------------------------------------------------------------------------
+//| Minimum-Width Signed Integer Types
+//|----------------------------------------------------------------------------
+
+int_least8_t                                                                      /* Signed integer type with at least 8 bits. */
+int_least16_t                                                                     /* Signed integer type with at least 16 bits. */
+int_least32_t                                                                     /* Signed integer type with at least 32 bits. */
+int_least64_t                                                                     /* Signed integer type with at least 64 bits. */
+
+//|----------------------------------------------------------------------------
+//| Minimum-Width Unsigned Integer Types
+//|----------------------------------------------------------------------------
+
+uint_least8_t                                                                     /* Unsigned integer type with at least 8 bits. */
+uint_least16_t                                                                    /* Unsigned integer type with at least 16 bits. */
+uint_least32_t                                                                    /* Unsigned integer type with at least 32 bits. */
+uint_least64_t                                                                    /* Unsigned integer type with at least 64 bits. */
+
+//|----------------------------------------------------------------------------
+//| Fastest Minimum-Width Signed Integer Types
+//|----------------------------------------------------------------------------
+
+int_fast8_t                                                                       /* Fast signed integer type with at least 8 bits. */
+int_fast16_t                                                                      /* Fast signed integer type with at least 16 bits. */
+int_fast32_t                                                                      /* Fast signed integer type with at least 32 bits. */
+int_fast64_t                                                                      /* Fast signed integer type with at least 64 bits. */
+
+//|----------------------------------------------------------------------------
+//| Fastest Minimum-Width Unsigned Integer Types
+//|----------------------------------------------------------------------------
+
+uint_fast8_t                                                                      /* Fast unsigned integer type with at least 8 bits. */
+uint_fast16_t                                                                     /* Fast unsigned integer type with at least 16 bits. */
+uint_fast32_t                                                                     /* Fast unsigned integer type with at least 32 bits. */
+uint_fast64_t                                                                     /* Fast unsigned integer type with at least 64 bits. */
+
+//|----------------------------------------------------------------------------
+//| Integer Types Capable of Holding Pointer Values
+//|----------------------------------------------------------------------------
+
+intptr_t                                                                          /* Signed integer type capable of holding a converted void pointer, if provided. */
+uintptr_t                                                                         /* Unsigned integer type capable of holding a converted void pointer, if provided. */
+
+//|----------------------------------------------------------------------------
+//| Greatest-Width Integer Types
+//|----------------------------------------------------------------------------
+
+intmax_t                                                                          /* Signed integer type capable of representing any value of any signed integer type. */
+uintmax_t                                                                         /* Unsigned integer type capable of representing any value of any unsigned integer type. */
+
+//|----------------------------------------------------------------------------
+//| Limits of Exact-Width Signed Integer Types
+//|----------------------------------------------------------------------------
+
+INT8_MIN                                                                          /* Minimum value of int8_t, if int8_t is provided. */
+INT8_MAX                                                                          /* Maximum value of int8_t, if int8_t is provided. */
+INT16_MIN                                                                         /* Minimum value of int16_t, if int16_t is provided. */
+INT16_MAX                                                                         /* Maximum value of int16_t, if int16_t is provided. */
+INT32_MIN                                                                         /* Minimum value of int32_t, if int32_t is provided. */
+INT32_MAX                                                                         /* Maximum value of int32_t, if int32_t is provided. */
+INT64_MIN                                                                         /* Minimum value of int64_t, if int64_t is provided. */
+INT64_MAX                                                                         /* Maximum value of int64_t, if int64_t is provided. */
+
+//|----------------------------------------------------------------------------
+//| Limits of Exact-Width Unsigned Integer Types
+//|----------------------------------------------------------------------------
+
+UINT8_MAX                                                                         /* Maximum value of uint8_t, if uint8_t is provided. */
+UINT16_MAX                                                                        /* Maximum value of uint16_t, if uint16_t is provided. */
+UINT32_MAX                                                                        /* Maximum value of uint32_t, if uint32_t is provided. */
+UINT64_MAX                                                                        /* Maximum value of uint64_t, if uint64_t is provided. */
+
+//|----------------------------------------------------------------------------
+//| Limits of Least-Width Signed Integer Types
+//|----------------------------------------------------------------------------
+
+INT_LEAST8_MIN                                                                    /* Minimum value of int_least8_t. */
+INT_LEAST8_MAX                                                                    /* Maximum value of int_least8_t. */
+INT_LEAST16_MIN                                                                   /* Minimum value of int_least16_t. */
+INT_LEAST16_MAX                                                                   /* Maximum value of int_least16_t. */
+INT_LEAST32_MIN                                                                   /* Minimum value of int_least32_t. */
+INT_LEAST32_MAX                                                                   /* Maximum value of int_least32_t. */
+INT_LEAST64_MIN                                                                   /* Minimum value of int_least64_t. */
+INT_LEAST64_MAX                                                                   /* Maximum value of int_least64_t. */
+
+//|----------------------------------------------------------------------------
+//| Limits of Least-Width Unsigned Integer Types
+//|----------------------------------------------------------------------------
+
+UINT_LEAST8_MAX                                                                   /* Maximum value of uint_least8_t. */
+UINT_LEAST16_MAX                                                                  /* Maximum value of uint_least16_t. */
+UINT_LEAST32_MAX                                                                  /* Maximum value of uint_least32_t. */
+UINT_LEAST64_MAX                                                                  /* Maximum value of uint_least64_t. */
+
+//|----------------------------------------------------------------------------
+//| Limits of Fastest Signed Integer Types
+//|----------------------------------------------------------------------------
+
+INT_FAST8_MIN                                                                     /* Minimum value of int_fast8_t. */
+INT_FAST8_MAX                                                                     /* Maximum value of int_fast8_t. */
+INT_FAST16_MIN                                                                    /* Minimum value of int_fast16_t. */
+INT_FAST16_MAX                                                                    /* Maximum value of int_fast16_t. */
+INT_FAST32_MIN                                                                    /* Minimum value of int_fast32_t. */
+INT_FAST32_MAX                                                                    /* Maximum value of int_fast32_t. */
+INT_FAST64_MIN                                                                    /* Minimum value of int_fast64_t. */
+INT_FAST64_MAX                                                                    /* Maximum value of int_fast64_t. */
+
+//|----------------------------------------------------------------------------
+//| Limits of Fastest Unsigned Integer Types
+//|----------------------------------------------------------------------------
+
+UINT_FAST8_MAX                                                                    /* Maximum value of uint_fast8_t. */
+UINT_FAST16_MAX                                                                   /* Maximum value of uint_fast16_t. */
+UINT_FAST32_MAX                                                                   /* Maximum value of uint_fast32_t. */
+UINT_FAST64_MAX                                                                   /* Maximum value of uint_fast64_t. */
+
+//|----------------------------------------------------------------------------
+//| Limits of Pointer-Sized Integer Types
+//|----------------------------------------------------------------------------
+
+INTPTR_MIN                                                                        /* Minimum value of intptr_t, if intptr_t is provided. */
+INTPTR_MAX                                                                        /* Maximum value of intptr_t, if intptr_t is provided. */
+UINTPTR_MAX                                                                       /* Maximum value of uintptr_t, if uintptr_t is provided. */
+
+//|----------------------------------------------------------------------------
+//| Limits of Greatest-Width Integer Types
+//|----------------------------------------------------------------------------
+
+INTMAX_MIN                                                                        /* Minimum value of intmax_t. */
+INTMAX_MAX                                                                        /* Maximum value of intmax_t. */
+UINTMAX_MAX                                                                       /* Maximum value of uintmax_t. */
+
+//|----------------------------------------------------------------------------
+//| Integer Constant Macros
+//|----------------------------------------------------------------------------
+
+INT8_C(value)                                                                     /* Expands to an int8_t-compatible integer constant. */
+INT16_C(value)                                                                    /* Expands to an int16_t-compatible integer constant. */
+INT32_C(value)                                                                    /* Expands to an int32_t-compatible integer constant. */
+INT64_C(value)                                                                    /* Expands to an int64_t-compatible integer constant. */
+
+UINT8_C(value)                                                                    /* Expands to a uint8_t-compatible unsigned integer constant. */
+UINT16_C(value)                                                                   /* Expands to a uint16_t-compatible unsigned integer constant. */
+UINT32_C(value)                                                                   /* Expands to a uint32_t-compatible unsigned integer constant. */
+UINT64_C(value)                                                                   /* Expands to a uint64_t-compatible unsigned integer constant. */
+
+//|----------------------------------------------------------------------------
+//| Greatest-Width Integer Constant Macros
+//|----------------------------------------------------------------------------
+
+INTMAX_C(value)                                                                    /* Expands to an intmax_t-compatible integer constant. */
+UINTMAX_C(value)                                                                   /* Expands to a uintmax_t-compatible unsigned integer constant. */
+
+//|----------------------------------------------------------------------------
+//| C23 Bit-Width Macros
+//|----------------------------------------------------------------------------
+
+INT8_WIDTH                                                                        /* Number of bits in int8_t, if provided. */
+INT16_WIDTH                                                                       /* Number of bits in int16_t, if provided. */
+INT32_WIDTH                                                                       /* Number of bits in int32_t, if provided. */
+INT64_WIDTH                                                                       /* Number of bits in int64_t, if provided. */
+
+UINT8_WIDTH                                                                       /* Number of bits in uint8_t, if provided. */
+UINT16_WIDTH                                                                      /* Number of bits in uint16_t, if provided. */
+UINT32_WIDTH                                                                      /* Number of bits in uint32_t, if provided. */
+UINT64_WIDTH                                                                      /* Number of bits in uint64_t, if provided. */
+
+INT_LEAST8_WIDTH                                                                  /* Number of bits in int_least8_t. */
+INT_LEAST16_WIDTH                                                                 /* Number of bits in int_least16_t. */
+INT_LEAST32_WIDTH                                                                 /* Number of bits in int_least32_t. */
+INT_LEAST64_WIDTH                                                                 /* Number of bits in int_least64_t. */
+
+UINT_LEAST8_WIDTH                                                                 /* Number of bits in uint_least8_t. */
+UINT_LEAST16_WIDTH                                                                /* Number of bits in uint_least16_t. */
+UINT_LEAST32_WIDTH                                                                /* Number of bits in uint_least32_t. */
+UINT_LEAST64_WIDTH                                                                /* Number of bits in uint_least64_t. */
+
+INT_FAST8_WIDTH                                                                   /* Number of bits in int_fast8_t. */
+INT_FAST16_WIDTH                                                                  /* Number of bits in int_fast16_t. */
+INT_FAST32_WIDTH                                                                  /* Number of bits in int_fast32_t. */
+INT_FAST64_WIDTH                                                                  /* Number of bits in int_fast64_t. */
+
+UINT_FAST8_WIDTH                                                                  /* Number of bits in uint_fast8_t. */
+UINT_FAST16_WIDTH                                                                 /* Number of bits in uint_fast16_t. */
+UINT_FAST32_WIDTH                                                                 /* Number of bits in uint_fast32_t. */
+UINT_FAST64_WIDTH                                                                 /* Number of bits in uint_fast64_t. */
+
+INTPTR_WIDTH                                                                      /* Number of bits in intptr_t, if provided. */
+UINTPTR_WIDTH                                                                     /* Number of bits in uintptr_t, if provided. */
+
+INTMAX_WIDTH                                                                      /* Number of bits in intmax_t. */
+UINTMAX_WIDTH                                                                     /* Number of bits in uintmax_t. */
+
+//|----------------------------------------------------------------------------
+//| C23 Integer Type Definitions
+//|----------------------------------------------------------------------------
+
+// C23 also provides additional integer-related facilities through <stdint.h>.
+// The exact-width types above are optional: an implementation defines them
+// only when it has a corresponding integer type with exactly that width.
+//
+// int_leastN_t and uint_leastN_t are always provided for supported widths
+// required by the implementation.
+//
+// int_fastN_t and uint_fastN_t provide integer types with at least N bits
+// that are intended to be efficient for the implementation.
+//
+// intptr_t and uintptr_t are optional because an implementation may not have
+// an integer type capable of holding a converted void pointer.
+//
+// intmax_t and uintmax_t are required and represent the widest signed and
+// unsigned integer types available to the implementation.
+
+//|----------------------------------------------------------------------------
+//| Width Requirements
+//|----------------------------------------------------------------------------
+
+// N in the exact-width, least-width, and fast-width families refers to:
+//
+//     8
+//     16
+//     32
+//     64
+//
+// Exact-width types have no padding bits and use two's complement for signed
+// integer representation in modern ISO C versions where these types exist.
+//
+// The exact-width types are optional because ISO C does not require every
+// implementation to provide an integer type of every specified width.
+
+//|----------------------------------------------------------------------------
+//| Common Usage
+//|----------------------------------------------------------------------------
+
+// Fixed-width integer:
+//
+//     int32_t x;
+//
+// Unsigned fixed-width integer:
+//
+//     uint32_t x;
+//
+// Maximum-width integer:
+//
+//     intmax_t x;
+//
+// Pointer-sized integer:
+//
+//     uintptr_t value;
+//
+// Portable integer constant:
+//
+//     UINT32_C(1000)
+//
+// Maximum integer value:
+//
+//     UINTMAX_MAX

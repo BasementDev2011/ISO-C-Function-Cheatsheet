@@ -1,0 +1,338 @@
+//|----------------------------------------------------------------------------
+//| Mathematical Constants (math.h)
+//|----------------------------------------------------------------------------
+
+HUGE_VAL                                                                      /* Positive infinity or another implementation-defined value indicating overflow in a double result. */
+HUGE_VALF                                                                     /* Positive infinity or another implementation-defined value indicating overflow in a float result. */
+HUGE_VALL                                                                     /* Positive infinity or another implementation-defined value indicating overflow in a long double result. */
+INFINITY                                                                      /* Constant expression of type float representing positive infinity, if supported. */
+NAN                                                                            /* Constant expression of type float representing a quiet NaN, if supported. */
+
+
+//|----------------------------------------------------------------------------
+//| Basic Operations (math.h)
+//|----------------------------------------------------------------------------
+
+double        fabs          (double value);                                      /* Returns the absolute value of value. */
+float         fabsf         (float value);                                       /* Returns the absolute value of value as a float. */
+long double   fabsl         (long double value);                                 /* Returns the absolute value of value as a long double. */
+
+double        fdim          (double x, double y);                                /* Returns the positive difference between x and y, or zero if x is less than or equal to y. */
+float         fdimf         (float x, float y);                                  /* Returns the positive difference between x and y, or zero if x is less than or equal to y. */
+long double   fdiml         (long double x, long double y);                      /* Returns the positive difference between x and y, or zero if x is less than or equal to y. */
+
+double        fmax          (double x, double y);                                /* Returns the larger of x and y. */
+float         fmaxf         (float x, float y);                                  /* Returns the larger of x and y. */
+long double   fmaxl         (long double x, long double y);                      /* Returns the larger of x and y. */
+
+double        fmin          (double x, double y);                                /* Returns the smaller of x and y. */
+float         fminf         (float x, float y);                                  /* Returns the smaller of x and y. */
+long double   fminl         (long double x, long double y);                      /* Returns the smaller of x and y. */
+
+double        fma           (double x, double y, double z);                      /* Computes x multiplied by y plus z as one correctly rounded operation. */
+float         fmaf          (float x, float y, float z);                         /* Computes x multiplied by y plus z as one correctly rounded operation. */
+long double   fmal          (long double x, long double y, long double z);       /* Computes x multiplied by y plus z as one correctly rounded operation. */
+
+
+//|----------------------------------------------------------------------------
+//| Rounding (math.h)
+//|----------------------------------------------------------------------------
+
+double        ceil          (double value);                                      /* Rounds value upward toward positive infinity. */
+float         ceilf         (float value);                                       /* Rounds value upward toward positive infinity. */
+long double   ceill         (long double value);                                 /* Rounds value upward toward positive infinity. */
+
+double        floor         (double value);                                      /* Rounds value downward toward negative infinity. */
+float         floorf        (float value);                                       /* Rounds value downward toward negative infinity. */
+long double   floorl        (long double value);                                 /* Rounds value downward toward negative infinity. */
+
+double        trunc         (double value);                                      /* Rounds value toward zero. */
+float         truncf        (float value);                                       /* Rounds value toward zero. */
+long double   truncl        (long double value);                                 /* Rounds value toward zero. */
+
+double        round         (double value);                                      /* Rounds value to the nearest integer, with halfway cases rounded away from zero. */
+float         roundf        (float value);                                       /* Rounds value to the nearest integer, with halfway cases rounded away from zero. */
+long double   roundl        (long double value);                                 /* Rounds value to the nearest integer, with halfway cases rounded away from zero. */
+
+long int      lround        (double value);                                      /* Rounds value to the nearest integer and returns a long int, with halfway cases rounded away from zero. */
+long int      lroundf       (float value);                                       /* Rounds value to the nearest integer and returns a long int, with halfway cases rounded away from zero. */
+long int      lroundl       (long double value);                                 /* Rounds value to the nearest integer and returns a long int, with halfway cases rounded away from zero. */
+
+long long int llround       (double value);                                      /* Rounds value to the nearest integer and returns a long long int, with halfway cases rounded away from zero. */
+long long int llroundf      (float value);                                       /* Rounds value to the nearest integer and returns a long long int, with halfway cases rounded away from zero. */
+long long int llroundl      (long double value);                                 /* Rounds value to the nearest integer and returns a long long int, with halfway cases rounded away from zero. */
+
+
+//|----------------------------------------------------------------------------
+//| Floating-Point Remainder (math.h)
+//|----------------------------------------------------------------------------
+
+double        fmod          (double x, double y);                                /* Returns the floating-point remainder of x divided by y. */
+float         fmodf         (float x, float y);                                  /* Returns the floating-point remainder of x divided by y. */
+long double   fmodl         (long double x, long double y);                      /* Returns the floating-point remainder of x divided by y. */
+
+double        remainder     (double x, double y);                                /* Returns the IEEE-style remainder of x divided by y. */
+float         remainderf    (float x, float y);                                 /* Returns the IEEE-style remainder of x divided by y. */
+long double   remainderl    (long double x, long double y);                      /* Returns the IEEE-style remainder of x divided by y. */
+
+double        remquo        (double x, double y, int *quotient);                 /* Returns the IEEE-style remainder and stores several low-order bits of the quotient. */
+float         remquof       (float x, float y, int *quotient);                   /* Returns the IEEE-style remainder and stores several low-order bits of the quotient. */
+long double   remquol       (long double x, long double y, int *quotient);       /* Returns the IEEE-style remainder and stores several low-order bits of the quotient. */
+
+
+//|----------------------------------------------------------------------------
+//| Exponential Functions (math.h)
+//|----------------------------------------------------------------------------
+
+double        exp           (double value);                                      /* Returns e raised to the power of value. */
+float         expf          (float value);                                       /* Returns e raised to the power of value. */
+long double   expl          (long double value);                                 /* Returns e raised to the power of value. */
+
+double        exp2          (double value);                                      /* Returns 2 raised to the power of value. */
+float         exp2f         (float value);                                       /* Returns 2 raised to the power of value. */
+long double   exp2l         (long double value);                                 /* Returns 2 raised to the power of value. */
+
+double        expm1         (double value);                                      /* Returns e raised to value minus 1 with increased accuracy for values near zero. */
+float         expm1f        (float value);                                       /* Returns e raised to value minus 1 with increased accuracy for values near zero. */
+long double   expm1l        (long double value);                                 /* Returns e raised to value minus 1 with increased accuracy for values near zero. */
+
+
+//|----------------------------------------------------------------------------
+//| Logarithmic Functions (math.h)
+//|----------------------------------------------------------------------------
+
+double        log           (double value);                                      /* Returns the natural logarithm of value. */
+float         logf          (float value);                                       /* Returns the natural logarithm of value. */
+long double   logl          (long double value);                                 /* Returns the natural logarithm of value. */
+
+double        log10         (double value);                                      /* Returns the base-10 logarithm of value. */
+float         log10f        (float value);                                       /* Returns the base-10 logarithm of value. */
+long double   log10l        (long double value);                                 /* Returns the base-10 logarithm of value. */
+
+double        log2          (double value);                                      /* Returns the base-2 logarithm of value. */
+float         log2f         (float value);                                       /* Returns the base-2 logarithm of value. */
+long double   log2l         (long double value);                                 /* Returns the base-2 logarithm of value. */
+
+double        log1p         (double value);                                      /* Returns the natural logarithm of 1 plus value with increased accuracy for values near zero. */
+float         log1pf        (float value);                                       /* Returns the natural logarithm of 1 plus value with increased accuracy for values near zero. */
+long double   log1pl        (long double value);                                 /* Returns the natural logarithm of 1 plus value with increased accuracy for values near zero. */
+
+
+//|----------------------------------------------------------------------------
+//| Power and Root Functions (math.h)
+//|----------------------------------------------------------------------------
+
+double        pow           (double base, double exponent);                     /* Returns base raised to the power of exponent. */
+float         powf          (float base, float exponent);                       /* Returns base raised to the power of exponent. */
+long double   powl          (long double base, long double exponent);            /* Returns base raised to the power of exponent. */
+
+double        sqrt          (double value);                                      /* Returns the nonnegative square root of value. */
+float         sqrtf         (float value);                                       /* Returns the nonnegative square root of value. */
+long double   sqrtl         (long double value);                                 /* Returns the nonnegative square root of value. */
+
+double        cbrt          (double value);                                      /* Returns the real cube root of value. */
+float         cbrtf         (float value);                                       /* Returns the real cube root of value. */
+long double   cbrtl         (long double value);                                 /* Returns the real cube root of value. */
+
+double        hypot         (double x, double y);                                /* Returns the square root of x squared plus y squared without undue overflow or underflow. */
+float         hypotf        (float x, float y);                                  /* Returns the square root of x squared plus y squared without undue overflow or underflow. */
+long double   hypotl        (long double x, long double y);                      /* Returns the square root of x squared plus y squared without undue overflow or underflow. */
+
+
+//|----------------------------------------------------------------------------
+//| Trigonometric Functions (math.h)
+//|----------------------------------------------------------------------------
+
+double        sin           (double angle);                                      /* Returns the sine of angle measured in radians. */
+float         sinf          (float angle);                                       /* Returns the sine of angle measured in radians. */
+long double   sinl          (long double angle);                                 /* Returns the sine of angle measured in radians. */
+
+double        cos           (double angle);                                      /* Returns the cosine of angle measured in radians. */
+float         cosf          (float angle);                                       /* Returns the cosine of angle measured in radians. */
+long double   cosl          (long double angle);                                 /* Returns the cosine of angle measured in radians. */
+
+double        tan           (double angle);                                      /* Returns the tangent of angle measured in radians. */
+float         tanf          (float angle);                                       /* Returns the tangent of angle measured in radians. */
+long double   tanl          (long double angle);                                 /* Returns the tangent of angle measured in radians. */
+
+
+//|----------------------------------------------------------------------------
+//| Inverse Trigonometric Functions (math.h)
+//|----------------------------------------------------------------------------
+
+double        asin          (double value);                                      /* Returns the arcsine of value in radians. */
+float         asinf         (float value);                                       /* Returns the arcsine of value in radians. */
+long double   asinl         (long double value);                                 /* Returns the arcsine of value in radians. */
+
+double        acos          (double value);                                      /* Returns the arccosine of value in radians. */
+float         acosf         (float value);                                       /* Returns the arccosine of value in radians. */
+long double   acosl         (long double value);                                 /* Returns the arccosine of value in radians. */
+
+double        atan          (double value);                                      /* Returns the arctangent of value in radians. */
+float         atanf         (float value);                                       /* Returns the arctangent of value in radians. */
+long double   atanl         (long double value);                                 /* Returns the arctangent of value in radians. */
+
+double        atan2         (double y, double x);                                /* Returns the angle in radians of the vector with coordinates x and y. */
+float         atan2f        (float y, float x);                                  /* Returns the angle in radians of the vector with coordinates x and y. */
+long double   atan2l         (long double y, long double x);                      /* Returns the angle in radians of the vector with coordinates x and y. */
+
+
+//|----------------------------------------------------------------------------
+//| Hyperbolic Functions (math.h)
+//|----------------------------------------------------------------------------
+
+double        sinh          (double value);                                      /* Returns the hyperbolic sine of value. */
+float         sinhf         (float value);                                       /* Returns the hyperbolic sine of value. */
+long double   sinhl         (long double value);                                 /* Returns the hyperbolic sine of value. */
+
+double        cosh          (double value);                                      /* Returns the hyperbolic cosine of value. */
+float         coshf         (float value);                                       /* Returns the hyperbolic cosine of value. */
+long double   coshl         (long double value);                                 /* Returns the hyperbolic cosine of value. */
+
+double        tanh          (double value);                                      /* Returns the hyperbolic tangent of value. */
+float         tanhf         (float value);                                       /* Returns the hyperbolic tangent of value. */
+long double   tanhl         (long double value);                                 /* Returns the hyperbolic tangent of value. */
+
+
+//|----------------------------------------------------------------------------
+//| Inverse Hyperbolic Functions (math.h)
+//|----------------------------------------------------------------------------
+
+double        asinh         (double value);                                      /* Returns the inverse hyperbolic sine of value. */
+float         asinhf        (float value);                                       /* Returns the inverse hyperbolic sine of value. */
+long double   asinhl        (long double value);                                 /* Returns the inverse hyperbolic sine of value. */
+
+double        acosh         (double value);                                      /* Returns the inverse hyperbolic cosine of value. */
+float         acoshf        (float value);                                       /* Returns the inverse hyperbolic cosine of value. */
+long double   acoshl        (long double value);                                 /* Returns the inverse hyperbolic cosine of value. */
+
+double        atanh         (double value);                                      /* Returns the inverse hyperbolic tangent of value. */
+float         atanhf        (float value);                                       /* Returns the inverse hyperbolic tangent of value. */
+long double   atanhl        (long double value);                                 /* Returns the inverse hyperbolic tangent of value. */
+
+
+//|----------------------------------------------------------------------------
+//| Error and Gamma Functions (math.h)
+//|----------------------------------------------------------------------------
+
+double        erf           (double value);                                      /* Returns the error function of value. */
+float         erff          (float value);                                       /* Returns the error function of value. */
+long double   erfl          (long double value);                                 /* Returns the error function of value. */
+
+double        erfc          (double value);                                      /* Returns one minus the error function of value. */
+float         erfcf         (float value);                                       /* Returns one minus the error function of value. */
+long double   erfcl         (long double value);                                 /* Returns one minus the error function of value. */
+
+double        lgamma        (double value);                                      /* Returns the natural logarithm of the absolute value of the gamma function. */
+float         lgammaf       (float value);                                       /* Returns the natural logarithm of the absolute value of the gamma function. */
+long double   lgammal       (long double value);                                 /* Returns the natural logarithm of the absolute value of the gamma function. */
+
+double        tgamma        (double value);                                      /* Returns the gamma function of value. */
+float         tgammaf       (float value);                                       /* Returns the gamma function of value. */
+long double   tgammal       (long double value);                                 /* Returns the gamma function of value. */
+
+
+//|----------------------------------------------------------------------------
+//| Floating-Point Decomposition (math.h)
+//|----------------------------------------------------------------------------
+
+double        frexp         (double value, int *exponent);                       /* Decomposes value into a normalized fraction and an integral power of two. */
+float         frexpf        (float value, int *exponent);                        /* Decomposes value into a normalized fraction and an integral power of two. */
+long double   frexpl        (long double value, int *exponent);                  /* Decomposes value into a normalized fraction and an integral power of two. */
+
+double        ldexp         (double value, int exponent);                        /* Multiplies value by two raised to the power of exponent. */
+float         ldexpf        (float value, int exponent);                         /* Multiplies value by two raised to the power of exponent. */
+long double   ldexpl        (long double value, int exponent);                   /* Multiplies value by two raised to the power of exponent. */
+
+double        scalbn        (double value, int exponent);                        /* Multiplies value by FLT_RADIX raised to the power of exponent. */
+float         scalbnf       (float value, int exponent);                         /* Multiplies value by FLT_RADIX raised to the power of exponent. */
+long double   scalbnl       (long double value, int exponent);                   /* Multiplies value by FLT_RADIX raised to the power of exponent. */
+
+double        scalbln       (double value, long int exponent);                    /* Multiplies value by FLT_RADIX raised to the power of exponent. */
+float         scalblnf      (float value, long int exponent);                     /* Multiplies value by FLT_RADIX raised to the power of exponent. */
+long double   scalblnl      (long double value, long int exponent);               /* Multiplies value by FLT_RADIX raised to the power of exponent. */
+
+
+//|----------------------------------------------------------------------------
+//| Floating-Point Classification (math.h)
+//|----------------------------------------------------------------------------
+
+int           fpclassify    (real-floating-expression);                          /* Classifies a floating-point value as zero, subnormal, normal, infinite, or NaN. */
+int           isfinite      (real-floating-expression);                          /* Tests whether a floating-point value is finite. */
+int           isinf         (real-floating-expression);                          /* Tests whether a floating-point value is infinite. */
+int           isnan         (real-floating-expression);                          /* Tests whether a floating-point value is NaN. */
+int           isnormal      (real-floating-expression);                          /* Tests whether a floating-point value is normal. */
+int           signbit       (real-floating-expression);                          /* Tests whether a floating-point value has its sign bit set. */
+
+
+//|----------------------------------------------------------------------------
+//| Floating-Point Classification Constants (math.h)
+//|----------------------------------------------------------------------------
+
+FP_INFINITE                                                                    /* Classification value returned by fpclassify for an infinite value. */
+FP_NAN                                                                         /* Classification value returned by fpclassify for a NaN value. */
+FP_NORMAL                                                                      /* Classification value returned by fpclassify for a normal value. */
+FP_SUBNORMAL                                                                   /* Classification value returned by fpclassify for a subnormal value. */
+FP_ZERO                                                                        /* Classification value returned by fpclassify for zero. */
+
+
+//|----------------------------------------------------------------------------
+//| Floating-Point Comparison (math.h)
+//|----------------------------------------------------------------------------
+
+int           isgreater     (real-floating-expression, real-floating-expression); /* Tests whether the first value is greater than the second without raising an exception for NaN comparisons. */
+int           isgreaterequal(real-floating-expression, real-floating-expression); /* Tests whether the first value is greater than or equal to the second without raising an exception for NaN comparisons. */
+int           isless        (real-floating-expression, real-floating-expression); /* Tests whether the first value is less than the second without raising an exception for NaN comparisons. */
+int           islessequal   (real-floating-expression, real-floating-expression); /* Tests whether the first value is less than or equal to the second without raising an exception for NaN comparisons. */
+int           islessgreater (real-floating-expression, real-floating-expression); /* Tests whether the two values are unequal without raising an exception for NaN comparisons. */
+int           isunordered   (real-floating-expression, real-floating-expression); /* Tests whether either value is NaN. */
+
+
+//|----------------------------------------------------------------------------
+//| Floating-Point Sign and Scaling (math.h)
+//|----------------------------------------------------------------------------
+
+double        copysign      (double value, double sign);                         /* Returns value with the sign of sign. */
+float         copysignf     (float value, float sign);                           /* Returns value with the sign of sign. */
+long double   copysignl     (long double value, long double sign);               /* Returns value with the sign of sign. */
+
+double        nextafter     (double value, double direction);                    /* Returns the next representable floating-point value after value in the direction of direction. */
+float         nextafterf    (float value, float direction);                      /* Returns the next representable floating-point value after value in the direction of direction. */
+long double   nextafterl    (long double value, long double direction);          /* Returns the next representable floating-point value after value in the direction of direction. */
+
+double        nexttoward    (double value, long double direction);               /* Returns the next representable floating-point value after value in the direction of direction. */
+float         nexttowardf   (float value, long double direction);                 /* Returns the next representable floating-point value after value in the direction of direction. */
+long double   nexttowardl   (long double value, long double direction);           /* Returns the next representable floating-point value after value in the direction of direction. */
+
+
+//|----------------------------------------------------------------------------
+//| Floating-Point Manipulation (math.h)
+//|----------------------------------------------------------------------------
+
+double        modf          (double value, double *integer_part);                /* Separates value into integer and fractional parts with the same sign as value. */
+float         modff         (float value, float *integer_part);                  /* Separates value into integer and fractional parts with the same sign as value. */
+long double   modfl         (long double value, long double *integer_part);      /* Separates value into integer and fractional parts with the same sign as value. */
+
+double        ilogb         (double value);                                      /* Returns the unbiased exponent of value as an int. */
+int           ilogbf        (float value);                                       /* Returns the unbiased exponent of value as an int. */
+int           ilogbl        (long double value);                                 /* Returns the unbiased exponent of value as an int. */
+
+
+//|----------------------------------------------------------------------------
+//| Mathematical Constants
+//|----------------------------------------------------------------------------
+
+MATH_ERRNO                                                                      /* Indicates that math functions may report errors through errno. */
+MATH_ERREXCEPT                                                                  /* Indicates that math functions may report errors through floating-point exceptions. */
+
+math_errhandling                                                                /* Macro describing the supported floating-point error handling method. */
+
+//|----------------------------------------------------------------------------
+//| Quick Note
+//|----------------------------------------------------------------------------
+
+real-floating-expression is a generic data type for expressing values like:
+float
+double
+long double
+real-floating-expression is used as a generic for the type-generic macros in math.h
