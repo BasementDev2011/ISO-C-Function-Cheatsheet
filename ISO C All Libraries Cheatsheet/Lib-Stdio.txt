@@ -262,6 +262,23 @@ WEOF                                                                 /* Wide-cha
 // %n          Stores the number of characters written so far.
 // %%          Literal percent character.
 
+//|----------------------------------------------------------------------------
+//| Common Conversion and Length Modifier Combinations
+//|----------------------------------------------------------------------------
+//
+// %hhd        signed char
+// %hhu        unsigned char
+// %hd         short int
+// %hu         unsigned short int
+// %ld         long int
+// %lu         unsigned long int
+// %lld        long long int
+// %llu        unsigned long long int
+// %jd         intmax_t
+// %ju         uintmax_t
+// %zu         size_t
+// %td         ptrdiff_t
+// %Lf         long double
 
 //|----------------------------------------------------------------------------
 //| Formatted I/O Conversion Length Modifiers
