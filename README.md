@@ -1,6 +1,4 @@
-<img width="126" height="126" alt="channels4_profile" src="https://github.com/user-attachments/assets/8f02edd5-f93c-4f18-9d0f-bccd9f14d984" />
-
-I used to ask chatgpt all the time for function definitions and how to use them. Man pages worked but they're kinda messy.
-Plus, i have the function description, like what i want it to do. But don't know the name, which is really annoying.
-
-Next cheatsheets should be POSIX, and Unix afterwards.
+I used ChatGPT.
+Now before any mf flames me, i am NOT spending 1 month of my life digging through ancient gnu websites
+to find a function definition, OpenAI already scraped half the internet for training chatgpt so that it knows most of these functions.
+So i used that. And i did spent my time correcting it because when it generates a lot of text it begins to hallucinate.
