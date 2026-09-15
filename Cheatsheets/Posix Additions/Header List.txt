@@ -23,3 +23,5 @@ Headers with NO (or negligible) POSIX additions:
 - float.h
 - stdarg.h
 - stddef.h
+
+This folder is a work in progress.
